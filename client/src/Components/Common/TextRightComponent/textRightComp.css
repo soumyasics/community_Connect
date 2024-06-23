@@ -1,0 +1,57 @@
+.text-right-comp {
+  margin-top: 20px;
+  display: flex;
+  background-color: #460051;
+  color: white;
+}
+
+.text-right-img-container {
+  width: 50%;
+  position: relative;
+}
+.text-right-img-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, transparent, #470052 100%);
+  pointer-events: none;
+  background-clip: content-box;
+}
+
+.text-right-comp img {
+  width: 100%;
+  height: auto;
+  max-height: 20rem;
+}
+
+.text-right-comp > img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #ff0000 20%
+  ); /* Adjust the gradient as needed */
+  pointer-events: none; /* Ensure that the gradient doesn't interfere with the image */
+}
+.text-right-section {
+  width: 30%;
+  margin: auto;
+  margin-left: 20px;
+}
+
+.text-right-section > button {
+  background-color: #3189eb;
+  color: white;
+  width: 10rem;
+  border: none;
+  height: 39px;
+  font-size: 18px;
+}

@@ -1,0 +1,46 @@
+.single-orp-container {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+.single-orp-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.single-orp-text-container .orp-description {
+  font-style: italic;
+  color: gray;
+}
+
+.single-orp-img-container > img {
+  border-radius: 10px;
+  max-width: 70%;
+  margin: auto;
+  box-shadow: 2px 2px 5px black;
+  max-height: 80%;
+}
+.single-orp-text-container {
+  padding: 0 20px;
+  width: 50%;
+  text-align: left;
+}
+.single-orp-text-container > h2 {
+  color: purple;
+  letter-spacing: 1px;
+  font-weight: 800;
+  text-shadow: 2px 2px black;
+}
+.single-orp-text-container .row {
+  margin-top: 10px;
+}
+.single-orp-text-container .col {
+  font-size: 14px;
+  font-style: italic;
+}
+.single-orp-text-container .orp-requests-btn {
+  background-color: purple;
+  color: white;
+  margin-top: 20px;
+}

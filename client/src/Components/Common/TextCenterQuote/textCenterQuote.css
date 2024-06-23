@@ -1,0 +1,22 @@
+.text-center-quote-comp {
+  height: 300px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.text-center-quote-comp>div {
+  width: 40%;
+}
+
+
+.text-center-quote-comp h2 {
+    color: #EE6351;
+    font-family: "kaushan script", "sans-serif";
+}
+
+.text-center-quote-comp h4 {
+    color: #4b007a;
+    font-family: "kaushan script", "sans-serif";
+}

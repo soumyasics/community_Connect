@@ -1,0 +1,17 @@
+.home-view-donation-container {
+    background-color: #EE6351;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 320px;
+    flex-direction: column;
+}
+.home-view-donation-container h3 {
+    color: white;
+    font-weight: 800;
+}
+.home-view-donation-container table {
+    width: 90%;
+    margin-bottom: 30px;
+    
+}

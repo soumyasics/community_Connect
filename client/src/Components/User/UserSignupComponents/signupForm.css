@@ -1,0 +1,88 @@
+#user-signup-form-input {
+  width: 95%;
+}
+
+#user-signup-form-input input:not([type="checkbox"]) {
+  margin-top: 20px;
+}
+#user-signup-form-input input[type="file"] {
+  margin-top: 0;
+}
+
+#user-signup-form-input select {
+  margin-top: 20px;
+}
+#user-signup-form-input .signup-check-box {
+  margin-top: 0;
+}
+.signup-form-flex-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.signup-form-flex-div > div {
+  width: 50%;
+}
+
+.signup-form-name-div input {
+  width: 100%;
+}
+
+#user-signup-btn {
+  margin-top: 20px;
+  width: 170px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-form-flex-div .redirect-login {
+  color: #0d6efd;
+  font-weight: bold;
+  cursor: pointer;
+  font-weight: 18px;
+}
+
+#user-phonenumber-group {
+  /* display: block; */
+}
+#user-phonenumber-group input {
+  padding-right: calc(1.5em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem rem) calc(0.75em + 0.375rem);
+}
+#user-phonenumber-group .invalid-feedback {
+  display: block;
+}
+
+#user-phonenumber-group .user-phonenumber-input {
+  border: 1px solid #dc3545;
+}
+
+.user-phonenumber-input {
+  display: block;
+  width: 108%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  background-clip: padding-box;
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#valid-user-phonenumber-group {
+  border-color: #198754;
+  padding-right: calc(1.5em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}

@@ -1,0 +1,20 @@
+.text-center-comp {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+}
+.text-center-comp > button {
+  background-color: yellow;
+  color: black;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 20px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  /* width: 8rem; */
+  padding: 20px;
+  align-items: center;
+}

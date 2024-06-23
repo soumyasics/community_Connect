@@ -1,0 +1,26 @@
+.text-left-comp {
+  display: flex;
+  background-color: #fcdfff;
+  color: #3c0241;
+}
+
+.text-left-comp > img {
+  width: 50%;
+  height: auto;
+  max-height: 20rem;
+}
+
+.text-left-section {
+  width: 30%;
+  margin: auto;
+  margin-left: 15%;
+}
+
+.text-left-section > button {
+  background-color: #3189eb;
+  color: white;
+  width: 10rem;
+  border: none;
+  height: 39px;
+  font-size: 18px;
+}
