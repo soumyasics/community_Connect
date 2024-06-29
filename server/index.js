@@ -22,19 +22,19 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Tvm Community working" });
 });
 
-app.use("/community_connect_api/user", userRoutes);
-app.use("/community_connect_api/orphanage", orphanageRoutes);
-app.use("/community_connect_api/institute", institutionRoutes);
-app.use("/community_connect_api/organization", organizationRoutes);
-app.use("/community_connect_api/donation-request", donationRequestRoutes);
-app.use("/community_connect_api/donation", donationRoutes);
-app.use("/community_connect_api/ins-donation-request", insDonationRequestRoutes);
-app.use("/community_connect_api/ins-donation", insDonationRoutes);
-app.use("/community_connect_api/camp", campRoutes)
+app.use("/community_connect2_api/user", userRoutes);
+app.use("/community_connect2_api/orphanage", orphanageRoutes);
+app.use("/community_connect2_api/institute", institutionRoutes);
+app.use("/community_connect2_api/organization", organizationRoutes);
+app.use("/community_connect2_api/donation-request", donationRequestRoutes);
+app.use("/community_connect2_api/donation", donationRoutes);
+app.use("/community_connect2_api/ins-donation-request", insDonationRequestRoutes);
+app.use("/community_connect2_api/ins-donation", insDonationRoutes);
+app.use("/community_connect2_api/camp", campRoutes)
 app.all("/*", (req, res) => {
   res.status(404).json({ message: "Route not found." });
 });
-const PORT = 4014;
+const PORT = 4023;
 app.listen(PORT, () => {
-  console.log("Server started successfully on port ", PORT);
+  console.log("Server started successfully on port http://localhost:4023", PORT);
 });
