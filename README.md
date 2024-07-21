@@ -20,17 +20,27 @@
     - edit profile
     - view Institute and orpahange donated amount and date 
     - view total donated amount 
-    - view logout
+    - logout
 
  - institute
+    - signup (tvm pincode eg: 695523)
+    - login
+    - send donation request
+    - view donation request
+    - view profile
+    - edit profile
+
+    - logout
 
  - orphanage
     - signup
     - login
     - send donation request (ifsc code should be valid format eg: SBIN0005943)
+    - donation requst should approve by admin
     - view donation requests
     - view profile (view total received amount)
     - edit profile
+    - logout
 
  - organization
     - signup
@@ -52,4 +62,16 @@
 
 
  - admin (admin@gmail.com , admin@123)
+    - login
+    - view donation pending & full filled chart
+    - view total number of users
+    - view and search users
+    - view and search institutes
+    - view and search orphanages
+    - view and search organization
+    - view donation requests
+    - view camps
+    - view leaderboards
+    - accept or reject donation requests
+    - logout
   
