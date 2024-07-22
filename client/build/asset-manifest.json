@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/community_connect2/static/css/main.ef0cb941.css",
+    "main.js": "/community_connect2/static/js/main.5bae9f88.js",
+    "static/js/787.83dbedd8.chunk.js": "/community_connect2/static/js/787.83dbedd8.chunk.js",
+    "static/media/blood-donation-img.png": "/community_connect2/static/media/blood-donation-img.e8ca1d276aea52915666.png",
+    "static/media/team-img.png": "/community_connect2/static/media/team-img.e8ca1d276aea52915666.png",
+    "static/media/child-3.png": "/community_connect2/static/media/child-3.8ab320801390cff65b31.png",
+    "static/media/leaf-img-header.png": "/community_connect2/static/media/leaf-img-header.12a541e867a0ab243aff.png",
+    "static/media/login-header-img.png": "/community_connect2/static/media/login-header-img.9fad5249d3d61819efda.png",
+    "static/media/orp-4.png": "/community_connect2/static/media/orp-4.5907fd12eb980d023db9.png",
+    "static/media/volunteer-1.png": "/community_connect2/static/media/volunteer-1.47ebe583f15b15cb9301.png",
+    "static/media/user-landing-after-login.png": "/community_connect2/static/media/user-landing-after-login.64979d94774ca3658377.png",
+    "static/media/charity-img.png": "/community_connect2/static/media/charity-img.1095656f4c57fc4f9b49.png",
+    "static/media/ambulance-img.png": "/community_connect2/static/media/ambulance-img.56391109ce474be5986d.png",
+    "static/media/donation-camp.jpg": "/community_connect2/static/media/donation-camp.3c45855878f57d2405d6.jpg",
+    "static/media/orp-teady-bear.png": "/community_connect2/static/media/orp-teady-bear.b2b4d84bf9df00868566.png",
+    "static/media/bd1.jpeg": "/community_connect2/static/media/bd1.af5b4781c0e96a519f37.jpeg",
+    "static/media/ins-students2.jpg": "/community_connect2/static/media/ins-students2.a897a90a54951dd0f566.jpg",
+    "static/media/blood-donation-camp.jpg": "/community_connect2/static/media/blood-donation-camp.c2dd4d152d5288e8b109.jpg",
+    "static/media/childrens.jpg": "/community_connect2/static/media/childrens.cf69a4ba9b3f84feab4e.jpg",
+    "static/media/ins-student-smile.jpg": "/community_connect2/static/media/ins-student-smile.295cbbe340830998f8fe.jpg",
+    "static/media/books-stack.jpg": "/community_connect2/static/media/books-stack.5e3970f390cf3b223c85.jpg",
+    "static/media/growth-img.jpg": "/community_connect2/static/media/growth-img.fb7f9a765b7b116dab0e.jpg",
+    "static/media/cc-logo.jpg": "/community_connect2/static/media/cc-logo.b9ed4706cc2e14d4b29e.jpg",
+    "index.html": "/community_connect2/index.html",
+    "main.ef0cb941.css.map": "/community_connect2/static/css/main.ef0cb941.css.map",
+    "main.5bae9f88.js.map": "/community_connect2/static/js/main.5bae9f88.js.map",
+    "787.83dbedd8.chunk.js.map": "/community_connect2/static/js/787.83dbedd8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ef0cb941.css",
+    "static/js/main.5bae9f88.js"
+  ]
+}
