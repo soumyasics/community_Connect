@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/community_connect2/static/css/main.ef0cb941.css",
-    "main.js": "/community_connect2/static/js/main.5bae9f88.js",
+    "main.js": "/community_connect2/static/js/main.ae0677a6.js",
     "static/js/787.83dbedd8.chunk.js": "/community_connect2/static/js/787.83dbedd8.chunk.js",
     "static/media/blood-donation-img.png": "/community_connect2/static/media/blood-donation-img.e8ca1d276aea52915666.png",
     "static/media/team-img.png": "/community_connect2/static/media/team-img.e8ca1d276aea52915666.png",
@@ -25,11 +25,11 @@
     "static/media/cc-logo.jpg": "/community_connect2/static/media/cc-logo.b9ed4706cc2e14d4b29e.jpg",
     "index.html": "/community_connect2/index.html",
     "main.ef0cb941.css.map": "/community_connect2/static/css/main.ef0cb941.css.map",
-    "main.5bae9f88.js.map": "/community_connect2/static/js/main.5bae9f88.js.map",
+    "main.ae0677a6.js.map": "/community_connect2/static/js/main.ae0677a6.js.map",
     "787.83dbedd8.chunk.js.map": "/community_connect2/static/js/787.83dbedd8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ef0cb941.css",
-    "static/js/main.5bae9f88.js"
+    "static/js/main.ae0677a6.js"
   ]
 }

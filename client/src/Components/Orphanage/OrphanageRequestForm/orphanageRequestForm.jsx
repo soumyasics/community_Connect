@@ -52,6 +52,17 @@ const OrphanageRequestForm = ({ orpData }) => {
       return;
     } else {
       if (regExpCheck()) {
+        if (donationReqData.description.length < 30) {
+          alert("Description should be atleast 30 characters");
+          return;
+        }
+ 
+        
+
+        if (donationReqData.bankAcNumber.length !== 12) {
+          alert("Bank account number should be 12 digits");
+          return;
+        }
         sendDataToServer(donationReqData);
       } else {
         console.log("ifsc code is not valid");

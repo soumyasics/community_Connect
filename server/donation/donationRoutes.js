@@ -5,7 +5,9 @@ const {
   donationsDoneByUser,
   allDonations,
   allDonationsByASingleOrg,
-  allDonationsByASingleUser,donationsToASingleOrphanage
+  allDonationsByASingleUser,
+  donationsToASingleOrphanage,
+  donationsToASingleOrphanage2,
 } = require("./donationController.js");
 
 donationRoutes.get("/check", (req, res) => {
@@ -16,8 +18,21 @@ donationRoutes.post("/create", createDonation);
 donationRoutes.get("/get-all-donations", allDonations);
 donationRoutes.get("/donations-done-by-users", donationsDoneByUser);
 donationRoutes.get("/donations-done-by-organizations", donationsDoneByOrg);
-donationRoutes.get("/donations-done-by-single-user/:id", allDonationsByASingleUser);
-donationRoutes.get("/donations-done-by-single-org/:id", allDonationsByASingleOrg);
-donationRoutes.get("/donations-to-single-orphanage/:id", donationsToASingleOrphanage);
+donationRoutes.get(
+  "/donations-done-by-single-user/:id",
+  allDonationsByASingleUser
+);
+donationRoutes.get(
+  "/donations-done-by-single-org/:id",
+  allDonationsByASingleOrg
+);
+donationRoutes.get(
+  "/donations-to-single-orphanage/:id",
+  donationsToASingleOrphanage
+);
+donationRoutes.get(
+  "/donations-to-single-orphanage2/:id",
+  donationsToASingleOrphanage2
+);
 
 module.exports = donationRoutes;

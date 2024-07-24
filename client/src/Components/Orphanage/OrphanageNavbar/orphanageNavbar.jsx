@@ -88,6 +88,13 @@ const OrphanageNavbar = () => {
       setLoginModalShow(true);
     }
   };
+  const redirectSponsers = () => {
+    if (userContext && userContext.userType) {
+      navigate("../orphanage/sponsers");
+    } else {
+      setLoginModalShow(true);
+    }
+  };
   return (
     <>
       <Container fluid className="user-navbar-container">
@@ -124,6 +131,12 @@ const OrphanageNavbar = () => {
             onClick={redirectView}
           >
             View
+          </button>
+          <button
+            className="border-0 text-light bg-transparent"
+            onClick={redirectSponsers}
+          >
+            Sponsers
           </button>
         </div>
         <div className="user-navbar-right">

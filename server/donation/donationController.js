@@ -78,8 +78,6 @@ const createDonation = async (req, res) => {
       });
     }
 
-
-
     collectedAmt += convertedDonatedAmt;
     donationRequest.totallyCollectedAmount = collectedAmt;
 
@@ -134,22 +132,22 @@ const createDonation = async (req, res) => {
     // add the donated amount on the user or organization
     if (donatedUserId) {
       await UserModel.findByIdAndUpdate(donatedUserId, {
-        $inc: { totalDonatedAmt: convertedDonatedAmt }
-      })
+        $inc: { totalDonatedAmt: convertedDonatedAmt },
+      });
     }
     if (donatedOrganizationId) {
       await OrganizationModel.findByIdAndUpdate(donatedOrganizationId, {
-        $inc: {totalDonatedAmt: convertedDonatedAmt}
-      })
+        $inc: { totalDonatedAmt: convertedDonatedAmt },
+      });
     }
-    
+
     orphanage.totalReceivedAmt += convertedDonatedAmt;
     await orphanage.save();
 
     return res.status(201).json({
       message: "Donation created successfully",
       data: donation,
-      donationRequest
+      donationRequest,
     });
   } catch (error) {
     return res.status(500).json({ message: "Server Error" });
@@ -259,11 +257,27 @@ const donationsToASingleOrphanage = async (req, res) => {
     const donations = await DonationModel.find({ orphanageId: id })
       .populate("orphanageId")
       .populate("requestId")
-    .populate("donatedOrganizationId")
+      .populate("donatedOrganizationId")
       .populate("donatedUserId");
-    if (!donations) {
-      return res.status(404).json({ message: "Donation not found." });
+    
+    return res.status(200).json({ message: "All Donations", data: donations });
+  } catch (error) {
+    return res.status(500).json({ message: "Server Error", error });
+  }
+};
+const donationsToASingleOrphanage2 = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!id) {
+      return res.status(401).json({ message: "Id is required." });
     }
+    if (!isValidObjectId(id)) {
+      return res.status(404).json({ message: "Id is not valid." });
+    }
+    const donations = await DonationModel.find({ orphanageId: id })
+      .populate("orphanageId")
+      .populate("requestId")
+    
     return res.status(200).json({ message: "All Donations", data: donations });
   } catch (error) {
     return res.status(500).json({ message: "Server Error", error });
@@ -290,4 +304,5 @@ module.exports = {
   allDonationsByASingleOrg,
   allDonationsByASingleUser,
   donationsToASingleOrphanage,
+  donationsToASingleOrphanage2,
 };

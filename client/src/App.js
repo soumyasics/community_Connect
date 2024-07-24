@@ -31,6 +31,7 @@ import InsCreateDonationRequest from "./Pages/institutes/CreateDonationRequest/c
 import InsViewRequests from "./Pages/institutes/ViewRequests/viewRequests";
 import ViewInsDonationRequest from "./Components/User/InsDonationRequest/insDonationRequest";
 import InsDonationReqDetails from "./Components/User/InsDonationRequest/donationReqDetails";
+import { ViewOrphangeSponsers } from "./Pages/Orphanages/sponsers/sponsers";
 function App() {
   return (
     <BrowserRouter basename="community_connect2">
@@ -105,6 +106,10 @@ function App() {
         <Route
           path="/orphanage/donation-request"
           element={<CreateDonationRequest />}
+        />
+        <Route
+          path="/orphanage/sponsers"
+          element={<ViewOrphangeSponsers />}
         />
 
         <Route path="/orphanage/view-requests" element={<ViewRequests />} />
