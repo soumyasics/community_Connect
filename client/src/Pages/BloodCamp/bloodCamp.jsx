@@ -18,6 +18,15 @@ const BloodCamp = () => {
   const [campDate, setCampDate] = useState("");
   const [campCapacity, setCampCapacity] = useState("");
   const [orgId, setOrgId] = useState("");
+  const [today] = useState(() => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  });
+  
+  console.log('today', today)
   const { userContext } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
@@ -26,7 +35,6 @@ const BloodCamp = () => {
     }
   }, [userContext]);
 
-  console.log("orgi d", orgId);
   const handleChanges = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -43,11 +51,20 @@ const BloodCamp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(campCapacity, campDate, campName, campPlace);
     if (!campCapacity || !campDate || !campName || !campPlace) {
       console.log("Please fill all the fields");
     } else {
-      console.log("Thank you for registering with us");
+      const todayDate = new Date(today);
+      const selectedCampDate = new Date(campDate);
+      
+      if (campCapacity <= 0 || campCapacity > 100000) {
+        alert("Please enter a valid camp capacity.");
+        return;
+      }
+      if (selectedCampDate < todayDate) {
+        alert("Please select a valid camp conducting date.");
+        return;
+      }
       sendDataToServer();
     }
 
@@ -137,6 +154,7 @@ const BloodCamp = () => {
               type="date"
               placeholder="Date"
               name="campDate"
+              min={today}
               onChange={handleChanges}
               value={campDate}
             />

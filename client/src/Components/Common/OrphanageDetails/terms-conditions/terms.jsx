@@ -7,11 +7,11 @@ const TermsConditions = () => {
       <UserNavbar />
       <CommunityHeader />
       <div className="w-75 mx-auto p-5" style={{ minHeight: "300px" }}>
+        <h5 className="text-center"> Terms and Conditions</h5>
         <p>
-          Terms and Conditions Welcome to Community Connect, a platform designed
-          to connect orphanages, organizations, and users. Before using our
-          website, please read and understand the following terms governing your
-          use: <br />
+          Welcome to Community Connect, a platform designed to connect
+          orphanages, organizations, and users. Before using our website, please
+          read and understand the following terms governing your use: <br />
           <b>1. Acceptance of Terms: </b> By using Community Connect, you agree
           to these terms and any additional terms referenced here or provided by
           hyperlink. User Eligibility: Community Connect is open to orphanages,

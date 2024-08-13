@@ -29,46 +29,46 @@ const Footer = () => {
             {" "}
             Community Connect{" "}
           </h4>
-          <InputGroup style={{ width: "240px" }} className="footer-mail">
+          {/* <InputGroup style={{ width: "240px" }} className="footer-mail">
             <InputGroup.Text>
               <AiOutlineMail />
             </InputGroup.Text>
             <Form.Control type="text" placeholder="Enter Your Email" />
-          </InputGroup>
-          <div className="socialmedia-icons">
+          </InputGroup> */}
+          {/* <div className="socialmedia-icons">
             <FaSquareInstagram style={iconStyle} />
             <AiFillFacebook style={iconStyle} />
             <AiFillTwitterSquare style={iconStyle} />
             <AiFillGoogleCircle style={iconStyle} />
-          </div>
+          </div> */}
         </Stack>
 
-        <Stack className="my-stack">
+        {/* <Stack className="my-stack">
           <p> Page Links</p>
-          <p
+          </Stack> */}
+      
+          {/* <p onClick={() => navigate("/user/leaderboard")}>Leaderboard</p>
+          <p onClick={() => navigate("/terms")}>Legal terms</p> */}
+
+        <>
+          <Stack className="my-stack">
+            <p>Get started</p>
+            <p
             onClick={() => {
               navigate("/");
             }}
           >
             Home
           </p>
-          <p onClick={() => navigate("/user/leaderboard")}>Leaderboard</p>
-          <p onClick={() => navigate("/terms")}>Legal terms</p>
-        </Stack>
-
-        <>
-          <Stack className="my-stack">
-            <p>Get started</p>
-
             <p onClick={() => navigate("/user/signup")}>Sign Up</p>
             <p onClick={() => navigate("/user/login")}>Login </p>
           </Stack>
 
-          <Stack className="my-stack">
+          {/* <Stack className="my-stack">
             <p>About </p>
             <p onClick={() => navigate("/institute")}>Institute</p>
             <p onClick={() => navigate("/orphanage")}>Orphanage</p>
-          </Stack>
+          </Stack> */}
 
           <Stack className="my-stack">
             <p>Contact us</p>
@@ -77,7 +77,7 @@ const Footer = () => {
           </Stack>
         </>
 
-        <Stack className="download-app-stack my-stack">
+        {/* <Stack className="download-app-stack my-stack">
           <p>Download App</p>
           <img
             src="https://pbs.twimg.com/media/F8K8X3_XMAAKWYp?format=jpg&name=small"
@@ -87,13 +87,13 @@ const Footer = () => {
             src="https://pbs.twimg.com/media/F8K9Y0mXUAA7itL?format=png&name=small"
             alt="play-store"
           />
-        </Stack>
+        </Stack> */}
       </div>
       <div className="footer-credit">
         <p>©2024 Community Connect</p>
         <div>
-          <p>Terms of Service</p>
-          <p>Privacy Policy</p>
+          {/* <p>Terms of Service</p>
+          <p>Privacy Policy</p> */}
         </div>
       </div>
     </div>

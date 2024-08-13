@@ -144,9 +144,9 @@ const ViewBloodCamps = () => {
             <tbody>
               {campData.map((camp, index) => {
                 const isCurrentSlotBooked = camp?._id === bookedCampId;
-                if (isPastDate(camp.campDate)) {
-                  return null;
-                }
+                const capacity = camp?.campCapacity;
+                const totalReg = camp?.campRegistrations.length || 0;
+                const isFull = totalReg >= capacity;
                 return (
                   <tr key={index} className="text-left">
                     <td>{index + 1}</td>
@@ -166,7 +166,7 @@ const ViewBloodCamps = () => {
                           >
                             Cancel Booking{" "}
                           </Button>
-                        ) : isSlotAlreadyBooked ? (
+                        ) : isSlotAlreadyBooked || isFull ? (
                           <Button className="px-4" disabled={true}>
                             {" "}
                             Not Available
