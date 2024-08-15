@@ -120,11 +120,20 @@ const editOrgById = async (req, res) => {
       return res.status(401).json({ message: "Id is not valid" });
     }
 
-
     const user = await OrganizationModel.findById(id);
     if (!user) {
       return res.status(404).json({ message: "Organization not found" });
     }
+    const { email } = req.body;
+    if (email) {
+      const isEmailExist = await OrganizationModel.findOne({ email });
+      if (isEmailExist && isEmailExist._id.toString() !== id.toString()) {
+        return res
+          .status(400)
+          .json({ message: "Email already taken try a different email." });
+      }
+    }
+
     const updatedUser = await OrganizationModel.findByIdAndUpdate(
       id,
       req.body,

@@ -132,7 +132,15 @@ const editUserById = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    
+    const {email} = req.body;
+    if (email) {
+      const isEmailExist = await UserModel.findOne({ email });
+      if (isEmailExist && isEmailExist._id.toString() !== id.toString()) {
+        return res
+          .status(400)
+          .json({ message: "Email already taken try a different email." });
+      }
+    }
     const updatedUser = await UserModel.findByIdAndUpdate(id, req.body, {
       new: true,
     });

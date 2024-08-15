@@ -131,6 +131,15 @@ const editInstitueById = async (req, res) => {
       return res.status(404).json({ message: "Institution not found" });
     }
 
+    const {email} = req.body;
+    if (email) {
+      const isEmailExist = await InstitutionModel.findOne({ email });
+      if (isEmailExist && isEmailExist._id.toString() !== id.toString()) {
+        return res
+          .status(400)
+          .json({ message: "Email already taken try a different email." });
+      }
+    }
     let updated = await InstitutionModel.findByIdAndUpdate(id, req.body, {
       new: true,
     });

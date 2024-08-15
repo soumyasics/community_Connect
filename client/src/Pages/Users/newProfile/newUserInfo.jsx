@@ -59,6 +59,48 @@ const NewUserInfo = ({ activeUser }) => {
   async function saveProfile() {
     let id = userContext?.userData?._id || null;
     if (id) {
+      console.log('user infom', userInfo)
+      const {firstName, email, phoneNumber} = userInfo
+      if (!firstName) {
+        alert("Name field can't be empty");
+        return;
+      }
+
+      if (!/^[a-zA-Z]+$/.test(firstName)) {
+        alert("Name can only contain characters");
+        return;
+      }
+
+
+      if (!email) {
+        alert("Please enter email");
+        return;
+      }
+
+      if (!phoneNumber) {
+        alert("Please enter phone number");
+        return;
+      }
+
+      if (phoneNumber.length !== 10) {
+        alert("Phone number must be 10 digits");
+        return;
+      }
+      let phoneNumberReg = /^[0-9]{10}$/;
+      if (!phoneNumberReg.test(phoneNumber)) {
+        alert("Phone number must be 10 digits");
+        return;
+      }
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+      if (!isValidEmail(email)) {
+        alert("Invalid Email Address");
+        console.log("Invalid email");
+        return;
+      }
+
       editProfile(id, userInfo);
     } else {
       console.log("User id not found");
@@ -81,6 +123,10 @@ const NewUserInfo = ({ activeUser }) => {
         }
       })
       .catch((err) => {
+        const status = err?.response?.status;
+        if (status === 400) {
+          alert(err?.response?.data?.message);
+        }
         console.log("err on edit user", err);
       })
       .finally(() => {
@@ -191,6 +237,9 @@ const NewUserInfo = ({ activeUser }) => {
                       value={userInfo.phoneNumber}
                       onChange={handleChanges}
                       name="phoneNumber"
+                      pattern="[0-9]{10}"
+                      minLength={10}
+                      maxLength={10}
                     />
                   </>
                 ) : (

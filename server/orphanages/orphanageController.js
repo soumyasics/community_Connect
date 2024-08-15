@@ -130,7 +130,15 @@ const editOrpById = async (req, res) => {
     if (!orphanage) {
       return res.status(404).json({ message: "Orphanage not found" });
     }
-   
+    const {email} = req.body;
+    if (email) {
+      const isEmailExist = await OrphanageModel.findOne({ email });
+      if (isEmailExist && isEmailExist._id.toString() !== id.toString()) {
+        return res
+          .status(400)
+          .json({ message: "Email already taken try a different email." });
+      }
+    }
     let updated = await OrphanageModel.findByIdAndUpdate(id, req.body, { new: true });
     return res.status(200).json({ message: "Orphanage updated" , data: updated});
   } catch (err) {
