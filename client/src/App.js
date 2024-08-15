@@ -32,6 +32,7 @@ import InsViewRequests from "./Pages/institutes/ViewRequests/viewRequests";
 import ViewInsDonationRequest from "./Components/User/InsDonationRequest/insDonationRequest";
 import InsDonationReqDetails from "./Components/User/InsDonationRequest/donationReqDetails";
 import { ViewOrphangeSponsers } from "./Pages/Orphanages/sponsers/sponsers";
+import { UserForgotPassword } from "./Pages/Users/forgotPassword/forgotPassword";
 function App() {
   return (
     <BrowserRouter basename="community_connect2">
@@ -40,6 +41,7 @@ function App() {
         <Route path="/" element={<UserHome />} />
         <Route path="/user/signup" element={<UserSignup />} />
         <Route path="/user/login" element={<UserLogin />} />
+        <Route path="/user/forgot-password" element={<UserForgotPassword />} />
         <Route
           path="/user/orphanages-list"
           element={<UserOrphanagesList activeUser="user" />}

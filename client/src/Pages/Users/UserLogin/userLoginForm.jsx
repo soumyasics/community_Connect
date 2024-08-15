@@ -187,6 +187,9 @@ const UserLoginForm = ({ user }) => {
   const redirectUserSignup = () => {
     navigate("/user/signup");
   };
+  const redirectForgotPass = () => {
+    navigate("/user/forgot-password");
+  }
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group>
@@ -233,6 +236,12 @@ const UserLoginForm = ({ user }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <div className="user-login-btn-container-2">
+        <p>
+          <span className="user-forgot-password" onClick={redirectForgotPass}>
+            {" "}
+            Forgotten password?
+          </span>
+        </p>
         <p>
           Don’t have an account?{" "}
           <span className="user-forgot-password" onClick={redirectUserSignup}>
