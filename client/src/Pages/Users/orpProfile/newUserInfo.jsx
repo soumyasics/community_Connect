@@ -63,17 +63,16 @@ const NewUserInfo = ({ activeUser }) => {
   async function saveProfile() {
     let id = userContext?.userData?._id || null;
     if (id) {
-      const {name, email, phoneNumber} = userInfo
+      const { name, email, phoneNumber } = userInfo;
       if (!name) {
         alert("Name field can't be empty");
         return;
       }
 
-      if (!/^[a-zA-Z]+$/.test(name)) {
+      if (!/^[a-zA-Z\s]+$/.test(name)) {
         alert("Name can only contain characters");
         return;
       }
-
 
       if (!email) {
         alert("Please enter email");

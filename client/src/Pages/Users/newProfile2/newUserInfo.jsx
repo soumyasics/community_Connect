@@ -57,17 +57,16 @@ const NewUserInfo = ({ activeUser }) => {
   async function saveProfile() {
     let id = userContext?.userData?._id || null;
     if (id) {
-      const {name, email, phoneNumber} = userInfo
+      const { name, email, phoneNumber } = userInfo;
       if (!name) {
         alert("Name field can't be empty");
         return;
       }
 
-      if (!/^[a-zA-Z]+$/.test(name)) {
+      if (!/^[a-zA-Z\s]+$/.test(name)) {
         alert("Name can only contain characters");
         return;
       }
-
 
       if (!email) {
         alert("Please enter email");
@@ -110,19 +109,14 @@ const NewUserInfo = ({ activeUser }) => {
       .then((res) => {
         if (res.status === 200) {
           alert("Organization data Updated successfully");
-          
+
           let data = res.data?.data || null;
           console.log("res data edit", data);
 
           if (data) {
             loginUserContext("organization", data);
-              localStorage.setItem(
-                "organization-data",
-                JSON.stringify(data)
-              );
+            localStorage.setItem("organization-data", JSON.stringify(data));
           }
-
-
         }
       })
       .catch((err) => {

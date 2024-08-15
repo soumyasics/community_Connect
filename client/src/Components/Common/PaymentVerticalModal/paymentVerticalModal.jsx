@@ -11,6 +11,7 @@ export default function PaymentVerticalModal(props) {
   const [donationReqData, setDonationReqData] = useState(null);
   const [orphanageId, setOrphanageId] = useState(null);
   const [validated, setValidated] = useState(false);
+  const [today] = useState(new Date().toISOString().split("T")[0]);
   const [paymentModalContent, setPaymentModalContent] = useState({
     heading: "Donate",
     subHeading: "",
@@ -109,10 +110,7 @@ export default function PaymentVerticalModal(props) {
     try {
       const res = await axiosInstance.post("/donation/create", allDonationData);
       if (res.status === 201) {
-        console.log("res data =>", res.data);
-        console.log("res data =>", res.data.data);
         localStorage.setItem("lastDonation", JSON.stringify(res.data.data));
-        console.log("res data =>", res.data.donationRequest);
         alert("Donation successfull");
         props.onHide();
         setUserAcDetails({
@@ -162,16 +160,39 @@ export default function PaymentVerticalModal(props) {
     }
 
     setValidated(true);
-    const { acHolderName, cardNumber, expiryDate, cvv } = userAcDetails;
+    const { acHolderName, cardNumber, expiryDate, cvv, amount } = userAcDetails;
     const checkTypes = () => {
+      if (amount <= 0) {
+        alert("Please enter a valid amount");
+        return false;
+      }
       const convertCardNumber = Number(cardNumber);
       if (isNaN(convertCardNumber)) {
-        console.log("Check your card number");
+        alert("Check your card number");
+        return false;
+      }
+      // check acHolderName have only alphabets
+      if (!/^[a-zA-Z\s]+$/.test(acHolderName)) {
+        alert("Name should not contain numbers or special characters");
+        return false;
+      }
+      
+      // check expiryDate
+      const date = new Date(expiryDate);
+      const todaysDate = new Date();
+      date.setHours(0, 0, 0, 0) ;
+      todaysDate.setHours(0, 0, 0, 0);
+      if (date < todaysDate) {
+        alert("Card expiry date is not valid. Please choose a valid date");
         return false;
       }
       const convertCvv = Number(cvv);
       if (isNaN(convertCvv)) {
-        console.log("Check your cvv");
+        alert("Check your cvv");
+        return false;
+      }
+      if (cvv === "000") {
+        alert("Please provide a valid CVV");
         return false;
       }
 
@@ -292,10 +313,11 @@ export default function PaymentVerticalModal(props) {
                   pattern="[0-9]{2}/[0-9]{2}"
                   required
                   placeholder="MM/YY"
+                  min={today}
                   onChange={handleChange}
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide expiry date.
+                  Expiry date is not valid.
                 </Form.Control.Feedback>
               </Form.Group>
             </Col>
