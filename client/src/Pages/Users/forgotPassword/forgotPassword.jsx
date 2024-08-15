@@ -9,7 +9,8 @@ import UserFooter from "../../../Components/Common/UserFooter/userFooter.jsx";
 import CommunityHeader from "../../../Components/Common/CommunityHeader/CommunityHeader";
 import UserNavbar from "../../../Components/User/UserNavbar/userNavbar";
 import childrensImg from "../../../Assets/Images/childrens.jpg";
-export const UserForgotPassword = ({ user }) => {
+import { useParams } from "react-router-dom";
+export const UserForgotPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const UserForgotPassword = ({ user }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
-
+    const {userType} = useParams();
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
@@ -66,18 +67,19 @@ export const UserForgotPassword = ({ user }) => {
 
   const sendDataToServer = async (email, password) => {
     try {
-      const res = await axiosInstance.post(`/user/forgot-password`, {
+      const res = await axiosInstance.post(`${userType}/forgot-password`, {
         email,
         password,
       });
 
       if (res.status === 200) {
         alert("Password changed successfully.");
+        navigate("/user/login");
       }
     } catch (error) {
       console.log(error);
       if (error.response?.status === 400) {
-        alert(error.response.data.message);
+        alert(error?.response?.data?.message);
       } else {
         alert(error.message);
       }

@@ -7,10 +7,12 @@ const {
   getAllInstitutions,
   editInstitueById,
   getInstituteById,
+  forgotPassword
 } = require("./institutionController.js");
 
 InstitutionRoutes.get("/", institutionCheck);
 InstitutionRoutes.post("/signup", upload, institutionSignup);
+InstitutionRoutes.post("/forgot-password", forgotPassword);
 InstitutionRoutes.post("/login", institutionLogin);
 InstitutionRoutes.get("/get-all-institutions", getAllInstitutions);
 InstitutionRoutes.get("/get-institute-by-id/:id", getInstituteById);

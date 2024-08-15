@@ -188,7 +188,7 @@ const UserLoginForm = ({ user }) => {
     navigate("/user/signup");
   };
   const redirectForgotPass = () => {
-    navigate("/user/forgot-password");
+    navigate(`/forgot-password/${user}`);
   }
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>

@@ -6,12 +6,13 @@ const {
   userCheck,
   getUserById,
   getAllUsers,
-  editUserById,
+  editUserById,forgotPassword
 } = require("./userController.js");
 
 userRoutes.get("/", userCheck);
 userRoutes.post("/signup", upload, userSignup);
 userRoutes.post("/login", userLogin);
+userRoutes.post("/forgot-password", forgotPassword);
 userRoutes.get("/get-all-users", getAllUsers);
 userRoutes.get("/get-user-by-id/:id", getUserById);
 userRoutes.patch("/edit-user-by-id/:id", editUserById);

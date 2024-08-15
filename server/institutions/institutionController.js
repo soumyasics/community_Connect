@@ -160,12 +160,31 @@ const isValidObjectId = (id) => {
   const isStringEqual = new ObjectId(id).toString() === id;
   return isValid && isStringEqual;
 };
+const forgotPassword = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+    const user = await InstitutionModel.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "Please check your email" });
+    }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.password = hashedPassword;
+    await user.save();
+    return res.status(200).json({ message: "Password changed successfully." });
+  } catch (error) {
+    return res.status(500).json({ message: "Server Error" });
+  }
+}
 module.exports = {
   institutionCheck,
   institutionSignup,
   institutionLogin,
   getAllInstitutions,
   editInstitueById,
-  getInstituteById
+  getInstituteById,
+  forgotPassword
 };
