@@ -79,8 +79,16 @@ const OrphanageSignupForm = () => {
         alert("Please agree to the terms and conditions");
         return;
       }
+      console.log("92");
+      if (
+        orphanageData.yearOfEstablishment > 2024 ||
+        orphanageData.yearOfEstablishment < 500
+      ) {
+        alert("Establishment year is not valid");
+        return;
+      }
       if (orphanageData.phoneNumber.length !== 10) {
-        console.log("Phone number must be 10 digits");
+        alert("Phone number must be 10 digits");
         return;
       }
       let phoneNumberReg = /^[0-9]{10}$/;
@@ -89,13 +97,13 @@ const OrphanageSignupForm = () => {
         return;
       }
       if (!isValidEmail(orphanageData.email)) {
-        alert ("Invalid Email id")
+        alert("Invalid Email id");
         console.log("Invalid email");
         return;
       }
 
       if (!validatePincode(orphanageData.pincode)) {
-        alert("Please provide a valid pincode (Trivandrum only)");
+        alert("Please provide a valid pincode");
         return;
       }
 

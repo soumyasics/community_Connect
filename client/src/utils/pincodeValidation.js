@@ -53,12 +53,7 @@ export const validatePincode = (pincode) => {
     return false;
   }
 
-  let isValid = tvmPincodes.find((pin) => {
-    return pin.toString() == pincode.toString();
-  });
-  if (isValid) {
-    return true;
-  }
+ 
 
-  return false;
+  return true;
 };
