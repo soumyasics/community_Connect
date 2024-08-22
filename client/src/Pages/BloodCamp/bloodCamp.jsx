@@ -57,6 +57,14 @@ const BloodCamp = () => {
       const todayDate = new Date(today);
       const selectedCampDate = new Date(campDate);
       
+      if (!/^[a-zA-Z\s]+$/.test(campName)) {
+        alert("Please enter a valid camp name.");
+        return;
+      }
+      if (!/^[a-zA-Z\s]+$/.test(campPlace)) {
+        alert("Please enter a valid camp place.");
+        return;
+      }
       if (campCapacity <= 0 || campCapacity > 100000) {
         alert("Please enter a valid camp capacity.");
         return;

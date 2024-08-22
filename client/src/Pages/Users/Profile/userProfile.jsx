@@ -74,8 +74,8 @@ const UserProfile = ({ activeUser }) => {
               <div onClick={redirectHome}>
                 <AiOutlineArrowLeft />
               </div>
-              <AiOutlineSetting />
-              <p>Settings</p>
+              {/* <AiOutlineSetting />
+              <p>Settings</p> */}
             </div>
             <div className="sidebar-items">
               <div
