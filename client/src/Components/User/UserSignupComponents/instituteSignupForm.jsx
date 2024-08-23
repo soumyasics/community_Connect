@@ -329,7 +329,7 @@ const InstituteSignupForm = () => {
       </Form.Group>
 
       <Form.Group className="position-relative mt-3">
-        <Form.Label>Upload Institute Photos (Square image)</Form.Label>
+        <Form.Label>Upload Institute Photos </Form.Label>
         <Form.Control
           accept="image/*"
           onChange={handleFilechange}

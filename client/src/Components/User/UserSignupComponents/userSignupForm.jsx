@@ -84,6 +84,27 @@ const UserSignupForm = () => {
         alert("Sorry, User's age must be 18 or above");
         return;
       }
+      if (userData.age > 120) {
+        alert("Sorry, User's age must be less than 120");
+        return;
+      }
+      if (!/^[a-zA-Z\s]+$/.test(userData.firstName)) {
+        alert("First name can only contain characters");
+        return;
+      }
+      if (!/^[a-zA-Z\s]+$/.test(userData.lastName)) {
+        alert("Last name can only contain characters");
+        return;
+      }
+      if (!/^[a-zA-Z\s]+$/.test(userData.street)) {
+        alert("Street name can only contain characters");
+        return;
+      }
+      if (!/^[a-zA-Z\s]+$/.test(userData.city)) {
+        alert("City name can only contain characters");
+        return;
+      }
+
       if (userData.phoneNumber.length !== 10) {
         console.log("Phone number must be 10 digits");
         return;
@@ -93,19 +114,34 @@ const UserSignupForm = () => {
         alert("Phone number must be 10 digits");
         return;
       }
+      let pincodeReg = /^[0-9]{6}$/;
+      if (!pincodeReg.test(userData.pincode)) {
+        alert("Pincode must be 6 digits");
+        return;
+      }
+      if (!validatePincode(userData.pincode)) {
+        alert("Invalid Pincode");
+        return;
+      }
       if (!isValidEmail(userData.email)) {
         alert("Invalid Email Address");
         console.log("Invalid email");
         return;
       }
+      if (!userData.img) {
+        alert("Please upload your photo ");
+        console.log("No image selected");
+        return;
+      }
 
-    
+      
 
       if (!agreedToTerms) {
         alert("Please agree to the terms and conditions");
         console.log("Not checked");
         return;
       }
+
       sendDataToServer(userData);
     }
   };
@@ -291,7 +327,10 @@ const UserSignupForm = () => {
             name="pincode"
             onChange={handleChange}
             value={userData?.pincode}
-            type="number"
+            type="text"
+            maxLength={6}
+            minLength={6}
+            pattern="[0-9]{6}"
             placeholder="Pincode"
             required
           />
@@ -319,7 +358,7 @@ const UserSignupForm = () => {
       </div>
 
       <Form.Group className="position-relative mt-3">
-        <Form.Label>Upload your photo (Square image) </Form.Label>
+        <Form.Label>Upload your photo </Form.Label>
         <Form.Control
           onChange={handleFilechange}
           type="file"

@@ -335,7 +335,7 @@ const OrphanageSignupForm = () => {
       </Form.Group>
 
       <Form.Group className="position-relative mt-3">
-        <Form.Label>Upload Orphanage Photos (Square image)</Form.Label>
+        <Form.Label>Upload Orphanage Photos </Form.Label>
         <Form.Control
           accept="image/*"
           onChange={handleFilechange}
