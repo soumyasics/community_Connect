@@ -20,6 +20,7 @@ const OrphanageRequestForm = ({ orpData }) => {
   });
   const [regExpPassed, setRegExpPassed] = useState(false);
 
+  const [today] = useState(new Date().toISOString().split("T")[0]);
   const [validated, setValidated] = useState(false);
   useEffect(() => {
     if (orpData) {
@@ -56,13 +57,21 @@ const OrphanageRequestForm = ({ orpData }) => {
           alert("Description should be atleast 30 characters");
           return;
         }
- 
-        
 
         if (donationReqData.bankAcNumber.length !== 12) {
           alert("Bank account number should be 12 digits");
           return;
         }
+        // check expiryDate
+        const date = new Date(donationReqData.deadline);
+        const todaysDate = new Date();
+        date.setHours(0, 0, 0, 0);
+        todaysDate.setHours(0, 0, 0, 0);
+        if (date < todaysDate) {
+          alert("Deadline is not valid. Please choose a valid date");
+          return false;
+        }
+
         sendDataToServer(donationReqData);
       } else {
         console.log("ifsc code is not valid");
@@ -210,6 +219,7 @@ const OrphanageRequestForm = ({ orpData }) => {
               type="date"
               value={donationReqData.deadline}
               name="deadline"
+              min={today}
               onChange={handleChange}
             />
             <Form.Control.Feedback type="invalid">

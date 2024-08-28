@@ -50,7 +50,25 @@ const ViewInsDonationRequest = () => {
     const allPendingReqs = acceptedReqs.filter(
       (req) => req.status === "pending"
     );
-    return allPendingReqs;
+
+    
+    const pendingWithPriority = allPendingReqs.map((req) => {
+      const descrption = req.description;
+      const highPriority = isHighPriority(descrption);
+      return { ...req, isHighPriority: highPriority };
+    });
+
+    // sort the pending requests with priority
+    pendingWithPriority.sort((a, b) => {
+      if (a.isHighPriority && !b.isHighPriority) {
+        return -1;
+      }
+      if (!a.isHighPriority && b.isHighPriority) {
+        return 1;
+      }
+      return 0;
+    });
+    return pendingWithPriority;
   }
 
   function getFullFilledReqs(acceptedReqs) {
@@ -92,3 +110,42 @@ const ViewInsDonationRequest = () => {
 };
 
 export default ViewInsDonationRequest;
+
+
+
+function isHighPriority(description) {
+  // List of keywords that indicate high priority
+  const highPriorityKeywords = [
+    "food",
+    "water",
+    "urgent",
+    "medicine",
+    "emergency",
+    "immediate",
+    "critical",
+    "shelter",
+    "clothing",
+    "medical",
+    "hygiene",
+    "sanitation",
+    "vaccination",
+    "health",
+    "nutrition",
+    "crisis",
+    "shortage",
+    "disaster",
+    "rescue",
+    "relief",
+    "support",
+    "aid",
+    "vital",
+    "essentials",
+    "necessities"
+  ];
+  
+
+  // Check if any of the high-priority keywords exist in the description
+  return highPriorityKeywords.some((keyword) =>
+    description.toLowerCase().includes(keyword)
+  );
+}

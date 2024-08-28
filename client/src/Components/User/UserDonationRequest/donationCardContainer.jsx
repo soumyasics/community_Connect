@@ -14,6 +14,7 @@ const DonationCardContainer = ({ allAcceptedReqs, title, isPending }) => {
           return (
             <Card
               key={req._id}
+              border={`${req?.isHighPriority === true ? "danger" : "primary"}`}
               className="shadow rounded pb-4 hover-shadow"
               onClick={() => {
                 navigate(req._id);
