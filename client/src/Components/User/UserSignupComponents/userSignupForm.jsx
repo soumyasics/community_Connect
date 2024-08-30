@@ -361,10 +361,14 @@ const UserSignupForm = () => {
         <Form.Label>Upload your photo </Form.Label>
         <Form.Control
           onChange={handleFilechange}
+          required
           type="file"
           name="img"
           accept="image/*"
         />
+        <Form.Control.Feedback type="invalid">
+          Please upload your photo.
+        </Form.Control.Feedback>
       </Form.Group>
       <div className="signup-form-flex-div">
         <Form.Group className="mt-3 ms-4">

@@ -92,6 +92,11 @@ const OrganizationSignupForm = () => {
         console.log("Invalid CIN", orgData.license);
         return;
       }
+
+      if (!orgData.img) {
+        alert("Please upload an image");
+        return;
+      }
    
       sendDataToServer(orgData);
     }
@@ -283,9 +288,13 @@ const OrganizationSignupForm = () => {
         <Form.Control
           type="file"
           name="file"
+          required
           accept="image/*"
           onChange={handleFilechange}
         />
+        <Form.Control.Feedback type="invalid">
+          Please upload your photo.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mt-3 ms-4">
         <Form.Check

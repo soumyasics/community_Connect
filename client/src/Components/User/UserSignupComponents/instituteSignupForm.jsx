@@ -31,6 +31,17 @@ const InstituteSignupForm = () => {
 
   // form validation
   const handleChange = (e) => {
+    const {name, value} = e.target
+    if (name === "yearOfEstablishment") {
+      if (String(value).length > 4) {
+        return
+      }
+    }else if (name === "pincode") {
+      if (String(value).length > 6) {
+        return
+      }
+    }
+
     setInstituteData({ ...instituteData, [e.target.name]: e.target.value });
   };
   const handleFilechange = (e) => {
@@ -102,6 +113,11 @@ const InstituteSignupForm = () => {
       if (!isValidLicsense(instituteData.license)) {
         console.log("Invalid license number");
         alert("Invalid license number");
+        return;
+      }
+
+      if (!instituteData.img) {
+        alert("Please upload an image");
         return;
       }
       sendDataToServer(instituteData);
@@ -335,7 +351,11 @@ const InstituteSignupForm = () => {
           onChange={handleFilechange}
           type="file"
           name="img"
+          required
         />
+        <Form.Control.Feedback type="invalid">
+          Please upload Institute photos.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mt-3 ms-4">
         <Form.Check
@@ -344,6 +364,7 @@ const InstituteSignupForm = () => {
           feedbackType="invalid"
           checked={agreedToTerms}
           onChange={handleCheckboxChange}
+
         />
         <label htmlFor="" className="ms-3">
           Agree to our{" "}

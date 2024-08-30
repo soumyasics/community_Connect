@@ -31,6 +31,16 @@ const OrphanageSignupForm = () => {
 
   // form validation
   const handleChange = (e) => {
+    const {name, value} = e.target
+    if (name === "yearOfEstablishment") {
+      if (String(value).length > 4) {
+        return
+      }
+    }else if (name === "pincode") {
+      if (String(value).length > 6) {
+        return
+      }
+    }
     setOrphanageData({ ...orphanageData, [e.target.name]: e.target.value });
   };
   const handleFilechange = (e) => {
@@ -110,6 +120,10 @@ const OrphanageSignupForm = () => {
       if (!isValidLicsense(orphanageData.license)) {
         console.log("Invalid license number");
         alert("Invalid license number");
+        return;
+      }
+      if (!orphanageData.img) {
+        alert("Please upload an image");
         return;
       }
       sendDataToServer(orphanageData);
@@ -340,8 +354,12 @@ const OrphanageSignupForm = () => {
           accept="image/*"
           onChange={handleFilechange}
           type="file"
+          required
           name="img"
         />
+        <Form.Control.Feedback type="invalid">
+          Please upload your orphanage photo.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mt-3 ms-4">
         <Form.Check
