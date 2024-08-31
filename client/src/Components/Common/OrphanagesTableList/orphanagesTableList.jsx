@@ -13,8 +13,9 @@ const OrphanagesTableList = ({ activeUser }) => {
   const getAllOrphanagesList = async () => {
     try {
       const res = await axiosInstance.get("orphanage/get-all-orphanages");
-      const lists = res?.data?.data;
+      let lists = res?.data?.data;
       if (lists.length > 0) {
+        lists.reverse();
         setOrphanagesList(lists);
       }
     } catch (error) {

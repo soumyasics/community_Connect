@@ -25,6 +25,7 @@ const ViewRequests = () => {
         "donation-request/get-all-requests-by-orphanage-id/" + id
       );
       let data = res?.data?.data || null;
+      data.reverse();
       if (data) {
         setAllReqs(data);
       }

@@ -26,6 +26,7 @@ export const ViewOrphangeSponsers = () => {
       );
       let data = res?.data?.data || null;
       console.log("data, data", data);
+      data.reverse()
       if (data) {
         setAllReqs(data);
       }

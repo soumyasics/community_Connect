@@ -120,6 +120,13 @@ const InstituteSignupForm = () => {
         alert("Please upload an image");
         return;
       }
+      if (
+        instituteData.yearOfEstablishment > 2024 ||
+        instituteData.yearOfEstablishment < 500
+      ) {
+        alert("Establishment year is not valid");
+        return;
+      }
       sendDataToServer(instituteData);
     }
   };

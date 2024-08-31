@@ -13,8 +13,9 @@ const InstituteTableList = ({ activeUser }) => {
   const getAllInsList = async () => {
     try {
       const res = await axiosInstance.get("institute/get-all-institutions");
-      const lists = res?.data?.data;
+      let lists = res?.data?.data;
       if (lists.length > 0) {
+        lists.reverse();
         setInstituteList(lists);
       }
     } catch (error) {
