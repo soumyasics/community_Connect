@@ -72,6 +72,15 @@ const OrphanageRequestForm = ({ orpData }) => {
           return false;
         }
 
+        if (
+          donationReqData.targetAmount <= 0 ||
+          isNaN(donationReqData.targetAmount) ||
+          donationReqData.targetAmount > 100000000
+        ) {
+          alert("Please enter a valid target amount");
+          return;
+        }
+
         sendDataToServer(donationReqData);
       } else {
         console.log("ifsc code is not valid");

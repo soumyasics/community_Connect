@@ -51,6 +51,35 @@ const InsRequestForm = ({ insData }) => {
       return;
     } else {
       if (regExpCheck()) {
+        if (donationReqData.description.length < 30) {
+          alert("Description should be atleast 30 characters");
+          return;
+        }
+
+        if (donationReqData.bankAcNumber.length !== 12) {
+          alert("Bank account number should be 12 digits");
+          return;
+        }
+
+        // check expiryDate
+        const date = new Date(donationReqData.deadline);
+        const todaysDate = new Date();
+        date.setHours(0, 0, 0, 0);
+        todaysDate.setHours(0, 0, 0, 0);
+        if (date < todaysDate) {
+          alert("Deadline is not valid. Please choose a valid date");
+          return false;
+        }
+
+        if (
+          donationReqData.targetAmount <= 0 ||
+          isNaN(donationReqData.targetAmount) ||
+          donationReqData.targetAmount > 100000000
+        ) {
+          alert("Please enter a valid target amount");
+          return;
+        }
+
         sendDataToServer(donationReqData);
       } else {
         console.log("ifsc code is not valid");
@@ -112,166 +141,175 @@ const InsRequestForm = ({ insData }) => {
   return (
     <>
       <h1 className="text-center mt-5">Create Donation Request</h1>
-    <div className="w-50  mx-auto bg-gray mb-5 pb-5 orp-req-box rounded">
-      <Form
-        className="mx-auto"
-        id="user-signup-form-input"
-        noValidate
-        validated={validated}
-        onSubmit={handleSubmit}
-      >
-        <div className="signup-form-flex-div">
-          <Form.Group>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Request Title"
-              name="title"
-              onChange={handleChange}
-              value={donationReqData.title}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please specify the request title.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              required
-              type="number"
-              placeholder="Amount Needed"
-              name="targetAmount"
-              onChange={handleChange}
-              value={donationReqData.targetAmount}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please enter your target amount!
-            </Form.Control.Feedback>
-          </Form.Group>
-        </div>
-        <div className="signup-form-flex-div">
-          <Form.Group>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Bank Name"
-              name="bank-name"
-            />
-            <Form.Control.Feedback type="invalid">
-              Please specify the bank name.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              required
-              type="text"
-              name="ifscCode"
-              onChange={handleChange}
-              value={donationReqData.ifscCode}
-              placeholder="Bank IFSC Number"
-              pattern="[A-Z]{4}0[A-Z0-9]{6}"
-              minLength={11}
-              maxLength={11}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please enter a valid IFSC code
-            </Form.Control.Feedback>
-          </Form.Group>
-        </div>
-        <div className="signup-form-flex-div">
-          <Form.Group>
-            <Form.Control
-              required
-              type="text"
-              name="bankAcNumber"
-              placeholder="Bank Account Number"
-              onChange={handleChange}
-              minLength={12}
-              maxLength={12}
-              pattern="[0-9]{12}"
-              value={donationReqData.bankAcNumber}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide your bank account number.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              required
-              type="date"
-              value={donationReqData.deadline}
-              name="deadline"
-              onChange={handleChange}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide the deadline of this request.
-            </Form.Control.Feedback>
-          </Form.Group>
-        </div>
-        <div className="signup-form-flex-div">
-          <Form.Group>
-            <Form.Control
-              required
-              as="select"
-              type="select"
-              name="category"
-              onChange={handleChange}
-              value={donationReqData.category}
-            >
-              <option value="">Select Request Category</option>
-              <option value="education">Education</option>
-              <option value="food">Food</option>
-              <option value="medical">Medical </option>
-              <option value="other">Other</option>
-            </Form.Control>
-            <Form.Control.Feedback type="invalid">
-              Please select category.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              required
-              as="select"
-              type="select"
-              name="urgencyLevel"
-              onChange={handleChange}
-              value={donationReqData.urgencyLevel}
-            >
-              <option value="">Select Urgency Level</option>
-              <option value="low">Low</option>
-              <option value="moderate">Moderate</option>
-              <option value="high">High</option>
-              <option value="critical">Critical</option>
-            </Form.Control>
-            <Form.Control.Feedback type="invalid">
-              Please select Urgency level.
-            </Form.Control.Feedback>
-          </Form.Group>
-        </div>
+      <div className="w-50  mx-auto bg-gray mb-5 pb-5 orp-req-box rounded">
+        <Form
+          className="mx-auto"
+          id="user-signup-form-input"
+          noValidate
+          validated={validated}
+          onSubmit={handleSubmit}
+        >
+          <div className="signup-form-flex-div">
+            <Form.Group>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Request Title"
+                name="title"
+                onChange={handleChange}
+                value={donationReqData.title}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please specify the request title.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                required
+                type="number"
+                placeholder="Amount Needed"
+                name="targetAmount"
+                onChange={handleChange}
+                value={donationReqData.targetAmount}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter your target amount!
+              </Form.Control.Feedback>
+            </Form.Group>
+          </div>
+          <div className="signup-form-flex-div">
+            <Form.Group>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Bank Name"
+                name="bank-name"
+              />
+              <Form.Control.Feedback type="invalid">
+                Please specify the bank name.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                required
+                type="text"
+                name="ifscCode"
+                onChange={handleChange}
+                value={donationReqData.ifscCode}
+                placeholder="Bank IFSC Number"
+                pattern="[A-Z]{4}0[A-Z0-9]{6}"
+                minLength={11}
+                maxLength={11}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid IFSC code
+              </Form.Control.Feedback>
+            </Form.Group>
+          </div>
+          <div className="signup-form-flex-div">
+            <Form.Group className="mt-3">
+              <Form.Label className="mb-0">
+                <p className="mb-0">Bank Account Number</p>
+              </Form.Label>
+              <Form.Control
+                className="mt-0"
+                required
+                type="text"
+                name="bankAcNumber"
+                placeholder="Bank Account Number"
+                onChange={handleChange}
+                minLength={12}
+                maxLength={12}
+                pattern="[0-9]{12}"
+                value={donationReqData.bankAcNumber}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide your bank account number.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label className="mb-0">
+                <p className="mb-0">Deadline</p>
+              </Form.Label>
+              <Form.Control
+                required
+                className="mt-0"
+                type="date"
+                min={new Date().toISOString().split("T")[0]}
+                value={donationReqData.deadline}
+                name="deadline"
+                onChange={handleChange}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide the deadline of this request.
+              </Form.Control.Feedback>
+            </Form.Group>
+          </div>
+          <div className="signup-form-flex-div">
+            <Form.Group>
+              <Form.Control
+                required
+                as="select"
+                type="select"
+                name="category"
+                onChange={handleChange}
+                value={donationReqData.category}
+              >
+                <option value="">Select Request Category</option>
+                <option value="education">Education</option>
+                <option value="food">Food</option>
+                <option value="medical">Medical </option>
+                <option value="other">Other</option>
+              </Form.Control>
+              <Form.Control.Feedback type="invalid">
+                Please select category.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                required
+                as="select"
+                type="select"
+                name="urgencyLevel"
+                onChange={handleChange}
+                value={donationReqData.urgencyLevel}
+              >
+                <option value="">Select Urgency Level</option>
+                <option value="low">Low</option>
+                <option value="moderate">Moderate</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+              </Form.Control>
+              <Form.Control.Feedback type="invalid">
+                Please select Urgency level.
+              </Form.Control.Feedback>
+            </Form.Group>
+          </div>
 
-        <Form.Group className="mt-3">
-          <Form.Control
-            placeholder="More details about this request"
-            value={donationReqData.description}
-            name="description"
-            onChange={handleChange}
-            as="textarea"
-            rows={2}
-            minLength={30}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Please provide more details about this request so we can assist you.{" "}
-            <br />
-            Minimum 30 characters are required.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <div className="signup-form-flex-div">
-          <Button id="user-signup-btn" className="mt-5" type="submit">
-            Request
-          </Button>
-        </div>
-      </Form>
-    </div>
+          <Form.Group className="mt-3">
+            <Form.Control
+              placeholder="More details about this request"
+              value={donationReqData.description}
+              name="description"
+              onChange={handleChange}
+              as="textarea"
+              rows={2}
+              minLength={30}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide more details about this request so we can assist
+              you. <br />
+              Minimum 30 characters are required.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <div className="signup-form-flex-div">
+            <Button id="user-signup-btn" className="mt-5" type="submit">
+              Request
+            </Button>
+          </div>
+        </Form>
+      </div>
     </>
   );
 };
