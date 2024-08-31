@@ -47,7 +47,8 @@ const ViewBloodCamps = () => {
     axiosInstance
       .get("/camp/get-all-camps")
       .then((response) => {
-        const camps = response.data.data || [];
+        let camps = response.data.data || [];
+        camps.reverse();
         if (camps.length > 0) {
           setCampData(camps);
         } else {

@@ -155,10 +155,14 @@ const BloodCamp = () => {
               Please provide camp place.
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mt-2">
+            <Form.Label>
+              <p className="mb-0">Camp Date</p>
+            </Form.Label>
             <Form.Control
               required
-              className="user-login-input"
+              style={{marginTop: "0"}}
+              className="user-login-input "
               type="date"
               placeholder="Date"
               name="campDate"

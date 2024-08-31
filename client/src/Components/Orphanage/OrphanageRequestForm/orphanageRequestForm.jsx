@@ -197,9 +197,13 @@ const OrphanageRequestForm = ({ orpData }) => {
           </Form.Group>
         </div>
         <div className="signup-form-flex-div">
-          <Form.Group>
+          <Form.Group className="mt-3">
+            <Form.Label className="mb-0">
+              <p className="mb-0">Back Account Number</p>
+            </Form.Label>
             <Form.Control
               required
+              className="mt-0"
               type="text"
               name="bankAcNumber"
               placeholder="Bank Account Number"
@@ -213,8 +217,13 @@ const OrphanageRequestForm = ({ orpData }) => {
               Please provide your bank account number.
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mt-3">
+            {/* add label  */}
+            <Form.Label className="mb-0">
+              <p className="mb-0">Deadline</p>
+            </Form.Label>
             <Form.Control
+              className="mt-0"
               required
               type="date"
               value={donationReqData.deadline}

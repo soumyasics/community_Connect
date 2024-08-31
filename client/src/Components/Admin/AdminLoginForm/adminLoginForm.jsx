@@ -22,7 +22,7 @@ const AdminLoginForm = () => {
 
     if (email === inputEmail && password === inputPassword) {
       localStorage.setItem("cc-admin", true);
-      alert("login successfull");
+      alert("Login successfull");
       setTimeout(() => {
         navigate("/admin");
       }, 1500);
