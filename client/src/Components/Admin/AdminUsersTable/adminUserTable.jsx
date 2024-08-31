@@ -61,7 +61,8 @@ const AdminUserTable = ({ searchUserName }) => {
   const getAllUsers = async () => {
     try {
       const res = await axiosInstance.get("user/get-all-users");
-      const allUsers = res?.data?.data;
+      let allUsers = res?.data?.data;
+      allUsers.reverse()
       if (allUsers.length > 0) {
         setUsersData(allUsers);
         setAllUsersData(allUsers);

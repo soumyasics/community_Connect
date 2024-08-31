@@ -60,9 +60,10 @@ const AdminInsTable = ({ searchUserName }) => {
   const getAllUsers = async () => {
     try {
       const res = await axiosInstance.get("institute/get-all-institutions");
-      const allUsers = res?.data?.data;
+      let allUsers = res?.data?.data;
       console.log(allUsers, "==allUsers")
       if (allUsers.length > 0) {
+        allUsers.reverse()
         setUsersData(allUsers);
         setAllUsersData(allUsers);
       }

@@ -71,7 +71,9 @@ const AdminDonationRequestTable = ({ searchUserName }) => {
       const res = await axiosInstance.get("donation-request/get-all-requests");
       const allReqs = res?.data?.data;
       if (allReqs.length > 0) {
-        const allPendingReqs = getPendingRequests(allReqs);
+        let allPendingReqs = getPendingRequests(allReqs);
+
+        allPendingReqs.reverse();
         setUsersData(allPendingReqs);
         setAllUsersData(allPendingReqs);
       }
